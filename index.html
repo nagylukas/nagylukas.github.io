@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVRSZ57LC7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVRSZ57LC7');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lukáš Nagy · Portfolio</title>
 <meta name="description" content="Lukáš Nagy, Data Scientist & AI Engineer. Apps, websites, open-source tools, and the occasional game." />
+<meta name="robots" content="index, follow" />
+<meta name="google-site-verification" content="QTaqFYUd8dOECDc91HzqkPPvivmEKM1bOQsuNd-S5No" />
+<link rel="canonical" href="https://nagylukas.github.io/" />
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nagylukas.github.io/" />
+<meta property="og:title" content="Lukáš Nagy · Portfolio" />
+<meta property="og:description" content="Data Scientist & AI Engineer. Apps, websites, open-source tools, and the occasional game." />
+<meta property="og:image" content="https://nagylukas.github.io/images/fa_thumb.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Lukáš Nagy · Portfolio" />
+<meta name="twitter:description" content="Data Scientist & AI Engineer. Apps, websites, open-source tools, and the occasional game." />
+<meta name="twitter:image" content="https://nagylukas.github.io/images/fa_thumb.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -414,11 +436,11 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 /* ---------- Data ---------- */
 const PROJECTS = [
   { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], year:2026, image:"images/fa_thumb.png",
-    blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an optional Azure IoT and Power BI dashboard.",
+    blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an Azure IoT and Power BI dashboard.",
     tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:true,
     link:"https://github.com/lukasn9/FootballAnalysis" },
   { id:"clipcontext", title:"ClipContext", categories:["Apps","Open source"], year:2026, image:"images/cc_thumb.webp",
-    blurb:"A lightweight macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
+    blurb:"An advanced macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
     tags:["Swift","SwiftUI","macOS"], role:"Solo · macOS app", featured:true,
     link:"https://github.com/lukasn9/ClipContext" },
   { id:"echostream", title:"EchoStream", categories:["Websites"], year:2026,
@@ -426,7 +448,7 @@ const PROJECTS = [
     tags:["TypeScript","Real-time","AI"], role:"Buildathon project", featured:true,
     link:"https://github.com/lukasn9/LiveEventApp" },
   { id:"esa-cci", title:"ESA CCI Toolbox", categories:["Open source"], year:2026,
-    blurb:"Contributed biomass notebooks to ESA's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both updated to the V7 dataset.",
+    blurb:"Contributed biomass notebooks to ESA's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both utilising the latest V7 dataset.",
     tags:["Jupyter","Python","Open data"], role:"Contributor · biomass notebooks", featured:false,
     link:"https://github.com/lukasn9/esa-climate-toolbox" },
   { id:"nocturne-pack", title:"Nocturne Pack", categories:["Apps"], year:2024, image:"images/np_thumb.png",
@@ -434,14 +456,14 @@ const PROJECTS = [
     tags:["Android","Icon design","Play Store"], role:"Gamezwire Studios", featured:false,
     link:"https://play.google.com/store/apps/details?id=com.gamezwire.nocturne" },
   { id:"jumper-maria", title:"Jumper Maria", categories:["Games"], year:2024, image:"images/jm_thumb.webp",
-    blurb:"A simple, fun platformer with 30 diverse levels and easy-to-learn mechanics, built for Xbox and distributed via the Microsoft Store.",
+    blurb:"A simple, fun platformer with 30 diverse levels and easy-to-learn mechanics, built for Xbox and available on Microsoft Store.",
     tags:["Xbox","Platformer","Microsoft Store"], role:"Gamezwire Studios", featured:false,
     link:"https://gamezwire.github.io/jumper-maria.html" },
   { id:"tunetap", title:"TuneTap", categories:["Games"], year:2023, image:"images/tt_thumb.webp",
     blurb:"A rhythm game about timing. Advance through challenging levels by clicking, holding, and dragging elements synced to the music. Available on Google Play and itch.io.",
     tags:["Android","Rhythm","Play Store"], role:"Gamezwire Studios", featured:false,
     link:"https://play.google.com/store/apps/details?id=com.GamezwireStudios.TuneTap" },
-  { id:"ekobilicka", title:"EkoBilíčka", categories:["Websites"], year:2023,
+  { id:"ekobilicka", title:"EkoBilíčka", categories:["Websites"], year:2023, image:"images/eb_thumb.webp",
     blurb:"Website for a school environmental club raising awareness of ecological issues through initiatives like paper collection and clothing swaps.",
     tags:["HTML","CSS","Static site"], role:"Web design & build", featured:false,
     link:"https://eko.bilicka.sk/" },
