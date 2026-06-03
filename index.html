@@ -237,6 +237,7 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
   background:
     radial-gradient(120% 120% at 0% 0%, color-mix(in oklab, var(--thumb, var(--accent)) 30%, transparent), transparent 55%),
     repeating-linear-gradient(135deg, var(--line) 0 1px, transparent 1px 16px); }
+.thumb--img{ object-fit:cover; display:block; }
 
 /* ---------- About ---------- */
 .about__grid{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:56px; align-items:center; }
@@ -412,11 +413,11 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 <script>
 /* ---------- Data ---------- */
 const PROJECTS = [
-  { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], year:2026,
+  { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], year:2026, image:"images/fa_thumb.png",
     blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an optional Azure IoT and Power BI dashboard.",
     tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:true,
     link:"https://github.com/lukasn9/FootballAnalysis" },
-  { id:"clipcontext", title:"ClipContext", categories:["Apps","Open source"], year:2026,
+  { id:"clipcontext", title:"ClipContext", categories:["Apps","Open source"], year:2026, image:"images/cc_thumb.webp",
     blurb:"A lightweight macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
     tags:["Swift","SwiftUI","macOS"], role:"Solo · macOS app", featured:true,
     link:"https://github.com/lukasn9/ClipContext" },
@@ -428,15 +429,15 @@ const PROJECTS = [
     blurb:"Contributed biomass notebooks to ESA's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both updated to the V7 dataset.",
     tags:["Jupyter","Python","Open data"], role:"Contributor · biomass notebooks", featured:false,
     link:"https://github.com/lukasn9/esa-climate-toolbox" },
-  { id:"nocturne-pack", title:"Nocturne Pack", categories:["Apps"], year:2024,
+  { id:"nocturne-pack", title:"Nocturne Pack", categories:["Apps"], year:2024, image:"images/np_thumb.png",
     blurb:"A dark, minimalist icon pack for Android (8.0 and up). Published on the Google Play Store under Gamezwire Studios.",
     tags:["Android","Icon design","Play Store"], role:"Gamezwire Studios", featured:false,
     link:"https://play.google.com/store/apps/details?id=com.gamezwire.nocturne" },
-  { id:"jumper-maria", title:"Jumper Maria", categories:["Games"], year:2024,
+  { id:"jumper-maria", title:"Jumper Maria", categories:["Games"], year:2024, image:"images/jm_thumb.webp",
     blurb:"A simple, fun platformer with 30 diverse levels and easy-to-learn mechanics, built for Xbox and distributed via the Microsoft Store.",
     tags:["Xbox","Platformer","Microsoft Store"], role:"Gamezwire Studios", featured:false,
     link:"https://gamezwire.github.io/jumper-maria.html" },
-  { id:"tunetap", title:"TuneTap", categories:["Games"], year:2023,
+  { id:"tunetap", title:"TuneTap", categories:["Games"], year:2023, image:"images/tt_thumb.webp",
     blurb:"A rhythm game about timing. Advance through challenging levels by clicking, holding, and dragging elements synced to the music. Available on Google Play and itch.io.",
     tags:["Android","Rhythm","Play Store"], role:"Gamezwire Studios", featured:false,
     link:"https://play.google.com/store/apps/details?id=com.GamezwireStudios.TuneTap" },
@@ -465,7 +466,9 @@ const initials = (title) => title.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filt
 // Rotated by each project's position so the colors cycle evenly.
 const THUMB_COLORS = ["#6A7B5D","#C2613F","#3F6CA8","#9C5A8C","#B08A3E"];
 const thumbColor = (p) => THUMB_COLORS[Math.max(0, PROJECTS.indexOf(p)) % THUMB_COLORS.length];
-const thumb = (p) => `<div class="thumb" aria-hidden="true" style="--thumb:${thumbColor(p)}">${esc(initials(p.title))}</div>`;
+const thumb = (p) => p.image
+  ? `<img class="thumb thumb--img" src="${esc(p.image)}" alt="${esc(p.title)} preview" loading="lazy" />`
+  : `<div class="thumb" aria-hidden="true" style="--thumb:${thumbColor(p)}">${esc(initials(p.title))}</div>`;
 const goArrow = `<svg viewBox="0 0 16 16" width="14" height="14"><path d="M5 11L11 5M11 5H5.5M11 5v5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
 /* ---------- Featured ---------- */
