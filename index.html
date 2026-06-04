@@ -435,7 +435,7 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 <script>
 /* ---------- Data ---------- */
 const PROJECTS = [
-  { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], year:2026, image:"images/fa_thumb.png",
+  { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], yearStart:2024, year:2026, image:"images/fa_thumb.png",
     blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an Azure IoT and Power BI dashboard.",
     tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:true,
     link:"https://github.com/lukasn9/FootballAnalysis" },
@@ -443,12 +443,12 @@ const PROJECTS = [
     blurb:"An advanced macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
     tags:["Swift","SwiftUI","macOS"], role:"Solo · macOS app", featured:true,
     link:"https://github.com/lukasn9/ClipContext" },
-  { id:"echostream", title:"EchoStream", categories:["Websites"], year:2026,
+  { id:"echostream", title:"EchoStream", categories:["Websites"], year:2026, image:"images/es_thumb.webp",
     blurb:"Real-time audience engagement for presenters, with live reactions and an AI Q&A chatbot grounded in the session transcript. Built on the EventLabs platform for a buildathon.",
     tags:["TypeScript","Real-time","AI"], role:"Buildathon project", featured:true,
     link:"https://github.com/lukasn9/LiveEventApp" },
   { id:"esa-cci", title:"ESA CCI Toolbox", categories:["Open source"], year:2026,
-    blurb:"Contributed biomass notebooks to ESA's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both utilising the latest V7 dataset.",
+    blurb:"Contributed biomass notebooks to the European Space Agency's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both utilising the latest V7 dataset.",
     tags:["Jupyter","Python","Open data"], role:"Contributor · biomass notebooks", featured:false,
     link:"https://github.com/lukasn9/esa-climate-toolbox" },
   { id:"nocturne-pack", title:"Nocturne Pack", categories:["Apps"], year:2024, image:"images/np_thumb.png",
@@ -483,6 +483,8 @@ const el = (tag, cls, html) => {
   return n;
 };
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+// `year` is the latest year (used for sorting / "Latest"); add `yearStart` to show a range.
+const yearLabel = (p) => p.yearStart && p.yearStart !== p.year ? `${p.yearStart}–${p.year}` : `${p.year}`;
 const initials = (title) => title.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join("") || "·";
 // Earthy palette to tint placeholder thumbnails so they aren't all the green accent.
 // Rotated by each project's position so the colors cycle evenly.
@@ -509,7 +511,7 @@ function renderFeatured() {
       <div class="feat__body">
         <div class="feat__head">
           <h3 class="feat__title">${esc(p.title)}</h3>
-          <span class="feat__year">${p.year}</span>
+          <span class="feat__year">${yearLabel(p)}</span>
         </div>
         <p class="feat__blurb">${esc(p.blurb)}</p>
         <div class="feat__meta">
@@ -573,7 +575,7 @@ function renderWork() {
       <div class="card__body">
         <div class="card__top">
           <span class="card__cat">${esc(p.categories.join(" · "))}</span>
-          <span class="card__year">${p.year}</span>
+          <span class="card__year">${yearLabel(p)}</span>
         </div>
         <h3 class="card__title">${esc(p.title)}</h3>
         <p class="card__blurb">${esc(p.blurb)}</p>
