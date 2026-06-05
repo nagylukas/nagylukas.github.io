@@ -122,6 +122,9 @@ img{ max-width:100%; }
 .btn--primary:hover{ transform:translateY(-2px); box-shadow:0 18px 34px -14px color-mix(in oklab, var(--accent) 75%, black); }
 .btn--primary:hover svg{ transform:translateX(4px); }
 .btn--lg{ font-size:19px; padding:16px 28px; }
+.btn--ghost{ background:transparent; color:var(--text); border-color:var(--line-strong); }
+.btn--ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+.work__more{ display:flex; justify-content:center; margin-top:28px; }
 
 /* ---------- Hero ---------- */
 .hero{ padding:84px 0 26px; }
@@ -160,9 +163,9 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 
 /* ---------- Featured ---------- */
 .featured{ padding-top:40px; }
-.feat__grid{ display:grid; grid-template-columns:1.18fr 1fr; gap:26px; align-items:start; }
-.feat__col{ display:flex; flex-direction:column; gap:26px; }
-.feat{ display:flex; flex-direction:column; background:var(--elev); border:1px solid var(--line);
+.feat__grid{ display:grid; grid-template-columns:minmax(0,1.18fr) minmax(0,1fr); gap:26px; align-items:start; }
+.feat__col{ display:flex; flex-direction:column; gap:26px; min-width:0; }
+.feat{ display:flex; flex-direction:column; min-width:0; background:var(--elev); border:1px solid var(--line);
   border-radius:14px; overflow:hidden; box-shadow:var(--shadow);
   transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .4s; }
 .feat:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lift); border-color:var(--line-strong); }
@@ -210,7 +213,7 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 .sortbtn__sep{ color:var(--line-strong); }
 
 /* grid */
-.work__grid--grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.work__grid--grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 .work__grid--list{ display:flex; flex-direction:column; gap:14px; }
 
 .card{ position:relative; background:var(--elev); border:1px solid var(--line); border-radius:13px;
@@ -223,7 +226,7 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 .card__media{ background:var(--bg-2); overflow:hidden; flex-shrink:0; }
 .card__media .thumb{ transition:transform .7s var(--ease); }
 .card:hover .card__media .thumb{ transform:scale(1.05); }
-.card__body{ display:flex; flex-direction:column; gap:9px; }
+.card__body{ display:flex; flex-direction:column; gap:9px; min-width:0; }
 .card__top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
 .card__cat{ font-size:12.5px; font-weight:500; color:var(--accent); white-space:nowrap; }
 .card__year{ font-size:13px; color:var(--faint); font-variant-numeric:tabular-nums; }
@@ -262,13 +265,12 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 .thumb--img{ object-fit:cover; display:block; }
 
 /* ---------- About ---------- */
-.about__grid{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:56px; align-items:center; }
-.about__media{ aspect-ratio:4/5; border-radius:8px; overflow:hidden; background:var(--bg-2);
-  border:1px solid var(--line); box-shadow:var(--shadow); }
+.about__grid{ display:flex; justify-content:center; }
+.about__text{ max-width:640px; text-align:center; }
 .about__lead{ font-family:var(--font-display); font-weight:var(--display-weight);
   font-size:clamp(24px,2.8vw,33px); line-height:1.18; letter-spacing:-0.012em; margin:.5em 0 .7em; text-wrap:pretty; }
-.about__para{ color:var(--soft); font-size:17px; margin:0 0 26px; max-width:52ch; text-wrap:pretty; }
-.about__facts{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.about__para{ color:var(--soft); font-size:17px; margin:0 auto 26px; max-width:52ch; text-wrap:pretty; }
+.about__facts{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); text-align:left; }
 .about__facts li{ display:flex; gap:18px; padding:14px 0; border-bottom:1px solid var(--line); font-size:15.5px; }
 .about__facts .fact-k{ flex:0 0 100px; color:var(--faint); font-size:13px; text-transform:uppercase;
   letter-spacing:.1em; padding-top:3px; }
@@ -296,9 +298,7 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 /* ---------- Responsive ---------- */
 @media (max-width:900px){
   .feat__grid{ grid-template-columns:1fr; }
-  .work__grid--grid{ grid-template-columns:repeat(2,1fr); }
-  .about__grid{ grid-template-columns:1fr; gap:32px; }
-  .about__media{ max-width:360px; }
+  .work__grid--grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   .footer__links{ grid-template-columns:repeat(2,1fr); }
   .nav__status{ display:none; }
 }
@@ -391,15 +391,17 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
       </div>
     </div>
 
-    <div class="work__grid work__grid--grid" id="work-grid"></div>
+    <div class="work__grid work__grid--list" id="work-grid"></div>
+    <div class="work__more">
+      <button class="btn btn--ghost" id="work-toggle" type="button"></button>
+    </div>
   </section>
+
+  <div class="hero__rule"></div>
 
   <!-- About -->
   <section class="section about" id="about">
     <div class="about__grid">
-      <div class="about__media reveal">
-        <div class="thumb" aria-hidden="true">LN</div>
-      </div>
       <div class="about__text">
         <div class="reveal"><span class="section__kicker">About</span></div>
         <p class="about__lead reveal">I'm Lukáš, a data scientist who got tired of insights dying in notebooks, so I learned to ship.</p>
@@ -540,7 +542,8 @@ function renderFeatured() {
 }
 
 /* ---------- Work (filter + sort) ---------- */
-let curCat = "All", curSort = "Newest";
+let curCat = "All", curSort = "Newest", expanded = false;
+const COLLAPSED_COUNT = 4;
 
 function renderFilters() {
   const wrap = document.getElementById("filters");
@@ -553,23 +556,35 @@ function renderFilters() {
     b.type = "button";
     b.setAttribute("role", "tab");
     b.setAttribute("aria-selected", c === curCat);
-    b.addEventListener("click", () => { curCat = c; renderFilters(); renderWork(); });
+    b.addEventListener("click", () => { curCat = c; expanded = false; renderFilters(); renderWork(); });
     wrap.appendChild(b);
   });
 }
 
 function renderWork() {
   const grid = document.getElementById("work-grid");
-  const layout = "grid";
+  const layout = "list";
   let list = PROJECTS.filter(p => curCat === "All" || p.categories.includes(curCat));
   list = list.slice().sort((a, b) => curSort === "Newest" ? b.year - a.year : a.year - b.year);
 
   document.getElementById("work-count").textContent =
     `${list.length} ${list.length === 1 ? "project" : "projects"}`;
 
+  const total = list.length;
+  const shown = expanded ? list : list.slice(0, COLLAPSED_COUNT);
+
+  // Toggle button: only needed when filtered list exceeds the collapsed count.
+  const toggle = document.getElementById("work-toggle");
+  if (total > COLLAPSED_COUNT) {
+    toggle.parentElement.style.display = "flex";
+    toggle.textContent = expanded ? "Show less" : `Show all ${total} projects`;
+  } else {
+    toggle.parentElement.style.display = "none";
+  }
+
   grid.className = `work__grid work__grid--${layout}`;
   grid.innerHTML = "";
-  list.forEach((p, i) => {
+  shown.forEach((p, i) => {
     const a = el("a", `card card--${layout}`);
     a.href = p.link || "#";
     if (/^https?:/.test(a.href)) { a.target = "_blank"; a.rel = "noopener"; }
@@ -611,6 +626,13 @@ function initSort() {
         b.classList.toggle("sortbtn--on", b === btn));
       renderWork();
     });
+  });
+}
+
+function initWorkToggle() {
+  document.getElementById("work-toggle").addEventListener("click", () => {
+    expanded = !expanded;
+    renderWork();
   });
 }
 
@@ -668,6 +690,7 @@ renderFilters();
 renderWork();
 renderFooter();
 initSort();
+initWorkToggle();
 initNavScroll();
 initSmoothNav();
 initTheme();
