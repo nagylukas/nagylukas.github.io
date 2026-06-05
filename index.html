@@ -435,6 +435,10 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 <script>
 /* ---------- Data ---------- */
 const PROJECTS = [
+  { id:"callisto", title:"Callisto", categories:["Apps","Open source"], year:2026, image:"images/ca_thumb.webp",
+    blurb:"A fast, privacy-first AI chat client for macOS and Windows. Claude, GPT, Gemini, and local models in one place, with compare mode, conversation branching, and every chat kept on your device.",
+    tags:["TypeScript","Rust","Tauri"], role:"Solo · desktop app", featured:true,
+    link:"https://github.com/lukasn9/CallistoAI" },
   { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], yearStart:2024, year:2026, image:"images/fa_thumb.png",
     blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an Azure IoT and Power BI dashboard.",
     tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:true,
@@ -445,9 +449,9 @@ const PROJECTS = [
     link:"https://github.com/lukasn9/ClipContext" },
   { id:"echostream", title:"EchoStream", categories:["Websites"], year:2026, image:"images/es_thumb.webp",
     blurb:"Real-time audience engagement for presenters, with live reactions and an AI Q&A chatbot grounded in the session transcript. Built on the EventLabs platform for a buildathon.",
-    tags:["TypeScript","Real-time","AI"], role:"Buildathon project", featured:true,
+    tags:["TypeScript","Real-time","AI"], role:"Buildathon project", featured:false,
     link:"https://github.com/lukasn9/LiveEventApp" },
-  { id:"esa-cci", title:"ESA CCI Toolbox", categories:["Open source"], year:2026,
+  { id:"esa-cci", title:"ESA CCI Toolbox", categories:["Open source"], year:2026, image:"images/cci_thumb.webp",
     blurb:"Contributed biomass notebooks to the European Space Agency's Climate Change Initiative Toolbox, including a biomass-change notebook and an above-ground-biomass volume timeline, both utilising the latest V7 dataset.",
     tags:["Jupyter","Python","Open data"], role:"Contributor · biomass notebooks", featured:false,
     link:"https://github.com/lukasn9/esa-climate-toolbox" },
