@@ -437,6 +437,10 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 <script>
 /* ---------- Data ---------- */
 const PROJECTS = [
+  { id:"orbit", title:"Orbit", categories:["Apps"], year:2026, image:"images/orbit_thumb.webp",
+    blurb:"A real-time satellite tracker for iPhone and iPad. Point your camera at the sky to find the ISS, hundreds of spacecraft, planets, constellations, and orbital debris in augmented reality.",
+    tags:["iOS","iPadOS","AR"], role:"Solo · iOS app", featured:true,
+    link:"orbit.html" },
   { id:"callisto", title:"Callisto", categories:["Apps","Open source"], year:2026, image:"images/ca_thumb.webp",
     blurb:"A fast, privacy-first AI chat client for macOS and Windows. Claude, GPT, Gemini, and local models in one place, with compare mode, conversation branching, and every chat kept on your device.",
     tags:["TypeScript","Rust","Tauri"], role:"Solo · desktop app", featured:true,
@@ -447,7 +451,7 @@ const PROJECTS = [
     link:"https://github.com/lukasn9/FootballAnalysis" },
   { id:"clipcontext", title:"ClipContext", categories:["Apps","Open source"], year:2026, image:"images/cc_thumb.webp",
     blurb:"An advanced macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
-    tags:["Swift","SwiftUI","macOS"], role:"Solo · macOS app", featured:true,
+    tags:["Swift","SwiftUI","macOS"], role:"Solo · macOS app", featured:false,
     link:"https://github.com/lukasn9/ClipContext" },
   { id:"echostream", title:"EchoStream", categories:["Websites"], year:2026, image:"images/es_thumb.webp",
     blurb:"Real-time audience engagement for presenters, with live reactions and an AI Q&A chatbot grounded in the session transcript. Built on the EventLabs platform for a buildathon.",
