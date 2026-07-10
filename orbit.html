@@ -12,7 +12,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Orbit · Real-time satellite tracker for iPhone & iPad</title>
-<meta name="description" content="Orbit turns your iPhone and iPad into a real-time satellite tracker. Point your camera at the sky to find the ISS, hundreds of spacecraft, planets, constellations, and orbital debris in augmented reality." />
+<meta name="description" content="Orbit turns your iPhone and iPad into a real-time satellite tracker. Point your camera at the sky to find the ISS, thousands of spacecraft, planets, constellations, and orbital debris in augmented reality." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://nagylukas.github.io/orbit.html" />
 <!-- Open Graph / social share -->
@@ -195,6 +195,8 @@ img{ max-width:100%; }
   .shots{ grid-template-columns:repeat(2,1fr); gap:18px; max-width:460px; }
 }
 @media (max-width:560px){
+  .hero{ padding-top:52px; }
+  .hero__lede{ font-size:15px; margin:0 auto 22px; max-width:38ch; }
   .section{ padding:64px 20px; }
   .wrap,.hero__inner,.nav__inner,.rule{ padding-left:20px; padding-right:20px; }
   .shots{ grid-template-columns:repeat(2,1fr); padding-left:20px; padding-right:20px; }
@@ -271,7 +273,7 @@ img{ max-width:100%; }
       <div class="spec"><b>iPhone &amp; iPad</b><span>Platform</span></div>
       <div class="spec"><b>iOS 17+</b><span>Requires</span></div>
       <div class="spec"><b>Augmented reality</b><span>Sky view</span></div>
-      <div class="spec"><b>Hundreds</b><span>Tracked objects</span></div>
+      <div class="spec"><b>15,000+</b><span>Tracked objects</span></div>
     </div>
   </section>
 
@@ -356,7 +358,7 @@ const FEATURES = [
     body:"Never miss the ISS again. Orbit calculates upcoming visible passes for satellites near you, including start time, peak elevation, and direction.",
     icon:'<path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/>' },
   { title:"Catalog",
-    body:"Browse hundreds of active satellites, space stations, weather satellites, navigation constellations, and more. Filter by category or search by name.",
+    body:"Browse thousands of active satellites, space stations, weather satellites, navigation constellations, and more. Filter by category or search by name.",
     icon:'<path d="M4 6h16M4 12h16M4 18h16"/>' },
   { title:"Museum — historic spacecraft",
     body:"Explore historically significant spacecraft from Sputnik 1 to the Hubble Space Telescope, with the story behind each one.",
