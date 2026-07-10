@@ -384,7 +384,7 @@ function renderShots() {
     fig.className = "phone reveal";
     fig.innerHTML =
       phPlaceholder(s.label) +
-      `<img class="phone__img" src="${esc(s.src)}" alt="Orbit — ${esc(s.label)}" loading="lazy" onerror="this.classList.add('is-broken')" />`;
+      `<img class="phone__img" src="${esc(s.src)}" alt="Orbit — ${esc(s.label)}" onerror="this.classList.add('is-broken')" />`;
     wrap.appendChild(fig);
   });
 }
