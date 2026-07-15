@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVRSZ57LC7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GVRSZ57LC7');
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PenForm · Handwriting coaching for iPad &amp; iPhone</title>
+<meta name="description" content="PenForm is a handwriting-coaching app for iPad and iPhone. Practice Print, Cursive, Italic, Greek, or Russian/Cyrillic scripts with Apple Pencil, get on-device feedback, and track your mastery, streaks, and XP." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://nagylukas.github.io/penform.html" />
+<!-- Open Graph / social share -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nagylukas.github.io/penform.html" />
+<meta property="og:title" content="PenForm · Handwriting coaching for iPad & iPhone" />
+<meta property="og:description" content="Practice Print, Cursive, Italic, Greek, or Russian/Cyrillic scripts with Apple Pencil, and get on-device feedback as you go." />
+<meta property="og:image" content="https://nagylukas.github.io/images/penform_thumb.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PenForm · Handwriting coaching for iPad & iPhone" />
+<meta name="twitter:description" content="Practice Print, Cursive, Italic, Greek, or Russian/Cyrillic scripts with Apple Pencil, and get on-device feedback as you go." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent: #4DB6AC;
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --display-weight: 700;
+
+  --bg: #1A2028;
+  --bg-2: #151A21;
+  --elev: #222A33;
+  --text: #EDF1F2;
+  --soft: #94A0A6;
+  --faint: #6E7A81;
+  --line: rgba(237,241,242,0.10);
+  --line-strong: rgba(237,241,242,0.20);
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 18px 40px -24px rgba(0,0,0,.6);
+  --shadow-lift: 0 2px 4px rgba(0,0,0,.35), 0 34px 60px -30px rgba(0,0,0,.75);
+  --maxw: 1080px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+[data-mode="light"]{
+  --bg: #F4F6F7;
+  --bg-2: #E9EDEF;
+  --elev: #FFFFFF;
+  --text: #1A2028;
+  --soft: #55636B;
+  --faint: #7E8B92;
+  --line: rgba(26,32,40,0.12);
+  --line-strong: rgba(26,32,40,0.22);
+  --shadow: 0 1px 2px rgba(26,32,40,.05), 0 18px 40px -24px rgba(26,32,40,.30);
+  --shadow-lift: 0 2px 4px rgba(26,32,40,.06), 0 34px 60px -30px rgba(26,32,40,.44);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-sans);
+  font-size:17px; line-height:1.6; letter-spacing:-0.005em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
+::selection{ background:var(--accent); color:#12181E; }
+img{ max-width:100%; }
+
+/* ---------- Nav ---------- */
+.nav{ position:sticky; top:0; z-index:50;
+  transition: background .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s; }
+.nav--scrolled{ background:color-mix(in oklab, var(--bg) 80%, transparent);
+  backdrop-filter:blur(14px) saturate(1.2); border-bottom:1px solid var(--line); }
+.nav__inner{ width:100%; max-width:var(--maxw); margin:0 auto; padding:16px 32px;
+  display:flex; align-items:center; justify-content:space-between; }
+.nav__brand{ display:flex; align-items:center; gap:9px; font-weight:600; font-size:16px; letter-spacing:-0.01em; }
+.nav__back{ display:inline-flex; align-items:center; gap:7px; font-size:15px; color:var(--soft); transition:color .25s; }
+.nav__back:hover{ color:var(--accent); }
+.nav__back svg{ transition:transform .3s var(--ease); }
+.nav__back:hover svg{ transform:translateX(-3px); }
+.nav__right{ display:flex; align-items:center; gap:18px; }
+
+/* ---------- Buttons ---------- */
+.btn{ display:inline-flex; align-items:center; gap:9px; font-family:var(--font-sans);
+  font-size:15.5px; font-weight:500; padding:13px 22px; border-radius:100px; cursor:pointer; white-space:nowrap;
+  border:1px solid transparent; transition:transform .3s var(--ease), background .3s, box-shadow .3s, color .3s; }
+.btn--primary{ background:var(--accent); color:#12181E; box-shadow:0 10px 30px -10px color-mix(in oklab, var(--accent) 60%, transparent); }
+.btn--primary:hover{ transform:translateY(-2px); box-shadow:0 16px 40px -10px color-mix(in oklab, var(--accent) 75%, transparent); }
+.btn--ghost{ background:transparent; color:var(--text); border-color:var(--line-strong); }
+.btn--ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+/* ---------- Layout ---------- */
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+.section{ width:100%; max-width:var(--maxw); margin:0 auto; padding:90px 32px; }
+.kicker{ display:inline-block; font-size:13px; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.rule{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+.rule::after{ content:""; display:block; height:1px; background:var(--line); }
+
+/* ---------- Hero ---------- */
+.hero{ padding:70px 0 20px; text-align:center;
+  background:radial-gradient(120% 80% at 50% -10%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%); }
+.hero__inner{ width:100%; max-width:760px; margin:0 auto; padding:0 32px; }
+.hero__badge{ display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--soft);
+  padding:6px 14px; border:1px solid var(--line); border-radius:100px; margin-bottom:26px; }
+.hero__badge i{ width:7px; height:7px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 0 0 color-mix(in oklab,var(--accent) 60%, transparent); animation:pulse 2.4s infinite; }
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--accent) 50%, transparent)} 70%{box-shadow:0 0 0 8px transparent} 100%{box-shadow:0 0 0 0 transparent} }
+.hero__title{ font-family:var(--font-display); font-weight:800;
+  font-size:clamp(46px,9vw,92px); line-height:1; letter-spacing:-0.035em; margin:0 0 18px; }
+.hero__tag{ font-family:var(--font-display); font-weight:600; font-size:clamp(19px,2.7vw,26px);
+  color:var(--accent); margin:0 0 22px; letter-spacing:-0.01em; }
+.hero__lede{ font-size:18.5px; color:var(--soft); margin:0 auto 32px; max-width:54ch; text-wrap:pretty; }
+.hero__cta{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ---------- iPad frame ---------- */
+.tablet{ position:relative; width:100%; aspect-ratio:4/3; border-radius:18px;
+  background:var(--bg-2); border:1px solid var(--line-strong); box-shadow:var(--shadow-lift);
+  overflow:hidden; }
+.tablet__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:1; }
+.tablet__img.is-broken{ display:none; }
+.tablet__ph{ position:absolute; inset:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:10px; text-align:center; padding:24px; color:var(--soft); z-index:0;
+  background:
+    radial-gradient(90% 60% at 50% 8%, color-mix(in oklab,var(--accent) 22%, transparent), transparent 60%),
+    repeating-linear-gradient(135deg, var(--line) 0 1px, transparent 1px 18px); }
+.tablet__ph svg{ width:34px; height:34px; opacity:.7; }
+.tablet__ph span{ font-size:13.5px; }
+
+/* ---------- Hero gallery ---------- */
+.shots{ width:100%; max-width:var(--maxw); margin:0 auto; padding:10px 32px 0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+.shots .tablet{ transition:transform .5s var(--ease); }
+.shots .tablet:hover{ transform:translateY(-6px); }
+.shots .tablet:nth-child(odd){ transform:translateY(16px); }
+.shots .tablet:nth-child(odd):hover{ transform:translateY(10px); }
+
+/* ---------- Features ---------- */
+.feat-head{ text-align:center; margin-bottom:56px; }
+.feat-head h2{ font-family:var(--font-display); font-weight:800;
+  font-size:clamp(26px,3.6vw,38px); letter-spacing:-0.022em; margin:0; line-height:1.1; }
+.features{ display:flex; flex-direction:column; gap:26px; }
+.feature{ display:grid; grid-template-columns:48px 1fr; gap:20px; align-items:start;
+  background:var(--elev); border:1px solid var(--line); border-radius:14px; padding:26px 28px;
+  box-shadow:var(--shadow); transition:transform .4s var(--ease), border-color .4s, box-shadow .4s; }
+.feature:hover{ transform:translateY(-3px); border-color:var(--line-strong); box-shadow:var(--shadow-lift); }
+.feature__icon{ width:48px; height:48px; border-radius:12px; display:grid; place-items:center;
+  background:color-mix(in oklab, var(--accent) 14%, transparent); color:var(--accent); }
+.feature__icon svg{ width:24px; height:24px; }
+.feature h3{ font-family:var(--font-display); font-weight:var(--display-weight); font-size:23px;
+  letter-spacing:-0.01em; margin:0 0 8px; }
+.feature p{ color:var(--soft); margin:0; font-size:16px; text-wrap:pretty; }
+
+/* ---------- Specs ---------- */
+.specs{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px; }
+.spec{ display:flex; flex-direction:column; gap:2px; align-items:center; min-width:150px;
+  background:var(--elev); border:1px solid var(--line); border-radius:12px; padding:18px 24px; }
+.spec b{ font-family:var(--font-display); font-size:20px; font-weight:var(--display-weight); }
+.spec span{ font-size:13px; color:var(--faint); text-transform:uppercase; letter-spacing:.08em; }
+
+/* ---------- Privacy ---------- */
+.privacy{ background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  transition:background .5s var(--ease); }
+.privacy__inner{ width:100%; max-width:760px; margin:0 auto; padding:80px 32px; }
+.privacy h2{ font-family:var(--font-display); font-weight:800;
+  font-size:clamp(24px,3.2vw,34px); letter-spacing:-0.022em; margin:0 0 8px; line-height:1.1; }
+.privacy__updated{ font-size:14px; color:var(--faint); margin:0 0 32px; }
+.privacy h3{ font-family:var(--font-display); font-weight:var(--display-weight); font-size:20px;
+  margin:30px 0 8px; }
+.privacy p{ color:var(--soft); margin:0 0 14px; text-wrap:pretty; }
+.privacy ul{ color:var(--soft); margin:0 0 14px; padding-left:22px; }
+.privacy li{ margin-bottom:7px; }
+.privacy a{ color:var(--accent); }
+.privacy a:hover{ text-decoration:underline; }
+
+/* ---------- Footer ---------- */
+.footer{ text-align:center; padding:50px 32px 60px; color:var(--faint); font-size:14px; }
+.footer a{ color:var(--soft); }
+.footer a:hover{ color:var(--accent); }
+
+/* ---------- Reveal ---------- */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal--in{ opacity:1; transform:none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .shots{ grid-template-columns:repeat(2,1fr); gap:20px; max-width:640px; }
+}
+@media (max-width:560px){
+  .hero{ padding-top:52px; }
+  .hero__lede{ font-size:15px; margin:0 auto 22px; max-width:38ch; }
+  .section{ padding:64px 20px; }
+  .wrap,.hero__inner,.nav__inner,.rule{ padding-left:20px; padding-right:20px; }
+  .shots{ grid-template-columns:1fr; max-width:460px; padding-left:20px; padding-right:20px; }
+  .shots .tablet:nth-child(odd){ transform:none; }
+  .shots .tablet:nth-child(n+2){ display:none; }
+  .feature{ grid-template-columns:1fr; gap:14px; }
+  .privacy__inner{ padding:60px 20px; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  .reveal{ opacity:1 !important; transform:none !important; }
+  .shots .tablet:nth-child(odd){ transform:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__back" href="index.html">
+      <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to portfolio
+    </a>
+    <div class="nav__right">
+      <span class="nav__brand">PenForm</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <span class="hero__badge"><i></i>Coming soon to the App Store</span>
+      <h1 class="hero__title">PenForm</h1>
+      <p class="hero__tag">Perfect your handwriting, one letter at a time.</p>
+      <p class="hero__lede">Practice Print, Cursive, Italic, Greek, or Russian/Cyrillic with guided lessons on iPad or iPhone, then drill any letter on your own in Free Practice.</p>
+      <div class="hero__cta">
+        <span class="btn btn--primary">Coming soon</span>
+        <a class="btn btn--ghost" href="#privacy">Privacy policy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot gallery -->
+  <div class="shots" id="shots"></div>
+
+  <!-- Intro -->
+  <section class="section" style="text-align:center; padding-bottom:40px;">
+    <p style="font-size:clamp(20px,2.6vw,26px); font-family:var(--font-display); line-height:1.4; max-width:40ch; margin:0 auto; text-wrap:pretty;">
+      PenForm turns your iPad or iPhone into a personal handwriting coach. Trace and write real letters and words with Apple Pencil or your finger, get instant on-device feedback, and watch your mastery grow letter by letter.
+    </p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="feat-head">
+      <span class="kicker">Features</span>
+      <h2>Everything you need to write better</h2>
+    </div>
+    <div class="features" id="features"></div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Specs -->
+  <section class="section" style="text-align:center;">
+    <span class="kicker">At a glance</span>
+    <div class="specs">
+      <div class="spec"><b>iPad &amp; iPhone</b><span>Platform</span></div>
+      <div class="spec"><b>5 scripts</b><span>Courses</span></div>
+      <div class="spec"><b>Pencil or finger</b><span>Input</span></div>
+      <div class="spec"><b>No sign-up</b><span>Accounts</span></div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section class="privacy" id="privacy">
+    <div class="privacy__inner">
+      <span class="kicker">Legal</span>
+      <h2>Privacy Policy</h2>
+      <p class="privacy__updated">Last updated: 15 July 2026</p>
+
+      <p>PenForm is designed to respect your privacy. This policy explains what the app accesses on your device, why, and what happens to it. In short: PenForm has no sign-up, no login, and no user accounts of any kind, and there is no backend server of any kind for this app. Everything you practice stays on your device, with one optional exception, an iCloud backup you control entirely through your own Apple ID, explained below.</p>
+
+      <h3>Accounts</h3>
+      <p>PenForm does not require you to sign up, log in, or create an account of any kind. The app is fully usable standalone.</p>
+
+      <h3>Handwriting input</h3>
+      <p>When you trace or write during a lesson or in Free Practice, your pen or finger strokes are captured on-device using Apple's PencilKit framework and scored on-device. This handwriting data is never uploaded to any server, because PenForm has no backend server of any kind.</p>
+
+      <h3>Practice progress</h3>
+      <p>Your mastery scores per letter, practice streak, XP, levels, and earned achievements are stored locally on your device only.</p>
+
+      <h3>iCloud backup (optional)</h3>
+      <p>PenForm can back up a small snapshot of your progress, your mastery scores, streak, XP, completed lessons, and earned achievements, but not your actual handwriting strokes, to your own private iCloud account. This happens automatically, and you can also trigger it manually using the "Back up now" and "Restore" controls in Settings. This uses Apple's NSUbiquitousKeyValueStore, which stores the data in your personal iCloud account. We have no access to this data, no copy of it, and no server that receives it, it is entirely under your control through your own Apple ID and iCloud settings.</p>
+
+      <h3>Game Center (optional)</h3>
+      <p>If you are already signed into Game Center at the system level, PenForm reports the IDs of achievements you earn to Apple's Game Center service so they appear in the system Game Center dashboard. This is governed by Apple's own Game Center and Apple ID privacy terms, not by us, we do not control or separately store this data.</p>
+
+      <h3>Notifications</h3>
+      <p>PenForm can schedule local reminders on your device, for example to help keep your practice streak going, using Apple's UserNotifications framework. These reminders are scheduled entirely on your device, and nothing about them is sent anywhere.</p>
+
+      <h3>Information we do not collect</h3>
+      <ul>
+        <li>No analytics or usage tracking of any kind.</li>
+        <li>No advertising and no ad networks; PenForm does not use advertising identifiers.</li>
+        <li>No third-party SDKs of any kind, only Apple's own frameworks (SwiftUI, SwiftData, PencilKit, GameKit, and UserNotifications).</li>
+        <li>No access to your camera, microphone, location, contacts, or photo library.</li>
+        <li>We do not sell, rent, or share your data with any third party.</li>
+        <li>No cross-app or cross-site tracking.</li>
+      </ul>
+
+      <h3>Data retention and deletion</h3>
+      <p>All of your practice data lives locally on your device. Deleting or uninstalling PenForm removes it, with one exception: if you have used the optional iCloud backup, that snapshot remains in your own iCloud account until you remove it yourself through your iCloud settings. We cannot delete it on your behalf, because we never have access to it.</p>
+
+      <h3>Children's privacy</h3>
+      <p>PenForm does not knowingly collect personal information from anyone, including children. There are no accounts, and no data leaves your device other than the optional backup to your own iCloud account, which is controlled entirely by you.</p>
+
+      <h3>Changes to this policy</h3>
+      <p>If this policy changes, the updated version will be posted on this page with a new "last updated" date.</p>
+
+      <h3>Contact</h3>
+      <p>Questions about this policy or your privacy in PenForm? Email <a href="mailto:nagy.lukas50@gmail.com">nagy.lukas50@gmail.com</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Lukáš Nagy · <a href="index.html">Back to portfolio</a></p>
+</footer>
+
+<script>
+/* ---------- Content ---------- */
+const SHOTS = [
+  { src:"images/penform_lessons.webp", label:"Guided Lessons" },
+  { src:"images/penform_freepractice.webp", label:"Free Practice" },
+];
+
+const FEATURES = [
+  { title:"Five scripts",
+    body:"Choose the script you want to learn: Print, Cursive, Italic, Greek, or Russian/Cyrillic, then work through a guided course built letter by letter, word by word.",
+    icon:'<path d="M2 5h6a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H2V5zM22 5h-6a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h7V5z"/>' },
+  { title:"Guided lessons",
+    body:"Trace and write real letters and words with Apple Pencil or your finger. Each lesson builds on the last, so muscle memory and confidence grow together.",
+    icon:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>' },
+  { title:"On-device handwriting analysis",
+    body:"Every attempt is scored the moment you lift the pen. Shape, slant, size, baseline, and smoothness are all analysed right on your device, with feedback to help you improve the next stroke.",
+    icon:'<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/>' },
+  { title:"Free Practice",
+    body:"Want to drill just one tricky letter? Free Practice lets you break away from the lesson path and repeat any individual letter as many times as you like.",
+    icon:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/>' },
+  { title:"Mastery, tracked letter by letter",
+    body:"Watch your mastery score for every letter climb as you practice, so you always know exactly which shapes still need work.",
+    icon:'<path d="M3 21h18"/><path d="M6 21V10M12 21V6M18 21v-8"/>' },
+  { title:"Streaks, XP, and achievements",
+    body:"Build a daily practice streak, earn XP, and level up as you go. Optional reminders help keep your streak alive, and earned achievements sync with Game Center.",
+    icon:'<path d="M12 22c4 0 7-2.8 7-7 0-3.5-2-5.8-3.3-8-.4 1.6-1.2 2.7-2 3.4C13 8 12.6 5.8 10.5 3c.2 2-1 3.4-2.2 5C6.8 9.8 5 12 5 15c0 4.2 3 7 7 7z"/>' },
+];
+
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const phPlaceholder = (label) =>
+  `<div class="tablet__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg><span>${esc(label)}</span></div>`;
+
+/* Render screenshots. The placeholder sits behind a real <img>; if the image
+   fails to load, the img hides itself and the labelled placeholder shows through. */
+function renderShots() {
+  const wrap = document.getElementById("shots");
+  SHOTS.forEach(s => {
+    const fig = document.createElement("div");
+    fig.className = "tablet reveal";
+    fig.innerHTML =
+      phPlaceholder(s.label) +
+      `<img class="tablet__img" src="${esc(s.src)}" alt="PenForm — ${esc(s.label)}" onerror="this.classList.add('is-broken')" />`;
+    wrap.appendChild(fig);
+  });
+}
+
+function renderFeatures() {
+  const wrap = document.getElementById("features");
+  FEATURES.forEach(f => {
+    const d = document.createElement("div");
+    d.className = "feature reveal";
+    d.innerHTML = `
+      <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${f.icon}</svg></div>
+      <div>
+        <h3>${esc(f.title)}</h3>
+        <p>${esc(f.body)}</p>
+      </div>`;
+    wrap.appendChild(d);
+  });
+}
+
+function initNavScroll() {
+  const nav = document.getElementById("nav");
+  const onScroll = () => nav.classList.toggle("nav--scrolled", window.scrollY > 24);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+function initReveal() {
+  const items = document.querySelectorAll(".reveal");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach(i => i.classList.add("reveal--in"));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("reveal--in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  items.forEach(i => io.observe(i));
+}
+
+/* ---------- Boot ---------- */
+renderShots();
+renderFeatures();
+initNavScroll();
+requestAnimationFrame(() => requestAnimationFrame(initReveal));
+</script>
+
+</body>
+</html>

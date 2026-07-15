@@ -425,6 +425,10 @@ body.loaded .anim-rule::after{ transform:scaleX(1); }
 <script>
 /* ---------- Data ---------- */
 const PROJECTS = [
+  { id:"penform", title:"PenForm", categories:["Apps"], year:2026, image:"images/penform_lessons.webp",
+    blurb:"A handwriting-coaching app for iPad and iPhone. Practice Print, Cursive, Italic, Greek, or Russian/Cyrillic scripts with Apple Pencil, get on-device feedback on shape, slant, and smoothness, and track mastery, streaks, and XP as you improve.",
+    tags:["SwiftUI","PencilKit","iPadOS"], role:"Solo · iOS app", featured:true,
+    link:"penform.html" },
   { id:"orbit", title:"Orbit", categories:["Apps"], year:2026, image:"images/orbit_thumb.webp",
     blurb:"A real-time satellite tracker for iPhone and iPad. Point your camera at the sky to find the ISS, hundreds of spacecraft, planets, constellations, and orbital debris in augmented reality.",
     tags:["iOS","iPadOS","AR"], role:"Solo · iOS app", featured:true,
@@ -435,7 +439,7 @@ const PROJECTS = [
     link:"https://github.com/lukasn9/CallistoAI" },
   { id:"football-analysis", title:"Football Analysis", categories:["Apps","Open source"], yearStart:2024, year:2026, image:"images/fa_thumb.png",
     blurb:"A machine-learning and computer-vision tool that tracks players and the ball to extract live match stats like goals, passes, shots, and positions, with an Azure IoT and Power BI dashboard.",
-    tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:true,
+    tags:["Python","OpenCV","PyTorch"], role:"Solo · ML & computer vision", featured:false,
     link:"https://github.com/lukasn9/FootballAnalysis" },
   { id:"clipcontext", title:"ClipContext", categories:["Apps","Open source"], year:2026, image:"images/cc_thumb.webp",
     blurb:"An advanced macOS menu-bar clipboard manager. Every copy is saved, searchable, and one tap from text actions like trim, translate, and strip-tracking-params.",
